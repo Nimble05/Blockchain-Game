@@ -20,10 +20,10 @@ jobs:
           cache: 'npm'
 
       - name: 安裝套件
-        run: npm install
+        run: npm ci
 
       - name: 編譯專案
-        run: npm run build
+        run: npx vite build
 
       - name: 部署到 GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
