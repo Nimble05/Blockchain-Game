@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Blockchain-Game/', 
+  base: '/Blockchain-Game/',
   server: { port: 5173 },
 });
