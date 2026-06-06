@@ -1,7 +1,8 @@
 const STEPS = [
   { key: 'commit', label: '① 承諾', sub: 'Commit' },
   { key: 'reveal', label: '② 揭露', sub: 'Reveal' },
-  { key: 'result', label: '③ 結果', sub: 'Settle'  },
+  { key: 'play',   label: '③ 遊玩', sub: 'Play'   },
+  { key: 'result', label: '④ 結果', sub: 'Settle'  },
 ];
 
 export default function StepBar({ currentPhase }) {
@@ -16,7 +17,6 @@ export default function StepBar({ currentPhase }) {
 
         return (
           <div key={step.key} className="flex items-center">
-            {/* Step circle */}
             <div className="flex flex-col items-center">
               <div className={`w-10 h-10 rounded-full flex items-center justify-center
                                font-bold text-sm border-2 transition-all
@@ -34,9 +34,8 @@ export default function StepBar({ currentPhase }) {
               <div className="text-xs text-gray-600">{step.sub}</div>
             </div>
 
-            {/* Connector line */}
             {idx < STEPS.length - 1 && (
-              <div className={`w-16 sm:w-24 h-0.5 mb-5
+              <div className={`w-12 sm:w-16 h-0.5 mb-5
                 ${idx < currentIdx ? 'bg-emerald-500' : 'bg-gray-700'}`} />
             )}
           </div>

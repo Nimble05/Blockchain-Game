@@ -1,5 +1,5 @@
-/** size: 'sm' | 'md' | 'lg' */
-export default function PlayingCard({ suit, value, hidden = false, size = 'md' }) {
+/** size: 'sm' | 'md' | 'lg'  delay: stagger index for animation */
+export default function PlayingCard({ suit, value, hidden = false, size = 'md', delay = 0 }) {
   const isRed = suit === '♥' || suit === '♦';
 
   const dim = {
@@ -8,20 +8,28 @@ export default function PlayingCard({ suit, value, hidden = false, size = 'md' }
     lg: 'w-18 h-24 text-base',
   }[size];
 
+  const style = { animationDelay: `${delay * 120}ms` };
+
   if (hidden) {
     return (
-      <div className={`${dim} rounded-lg border-2 border-indigo-700
-                       bg-indigo-900 flex items-center justify-center
-                       shadow-lg shadow-indigo-950`}>
+      <div
+        style={style}
+        className={`${dim} rounded-lg border-2 border-indigo-700
+                     bg-indigo-900 flex items-center justify-center
+                     shadow-lg shadow-indigo-950 animate-fade-in-up`}
+      >
         <span className="text-indigo-600 text-xl">?</span>
       </div>
     );
   }
 
   return (
-    <div className={`${dim} rounded-lg border-2 border-gray-200 bg-white
-                     flex flex-col justify-between p-1
-                     shadow-lg shadow-black/40 animate-fade-in-up`}>
+    <div
+      style={style}
+      className={`${dim} rounded-lg border-2 border-gray-200 bg-white
+                   flex flex-col justify-between p-1
+                   shadow-lg shadow-black/40 animate-fade-in-up`}
+    >
       <div className={`font-bold leading-none ${isRed ? 'text-red-600' : 'text-gray-900'}`}>
         <div>{value}</div>
         <div>{suit}</div>
